@@ -11,7 +11,7 @@
 """This module exports the Clang plugin class."""
 
 import shlex
-from SublimeLinter.lint import Linter, persist
+from SublimeLinter.lint import Linter, util
 import sublime
 import os
 import string
@@ -75,9 +75,9 @@ class Clang(Linter):
 
         result = self.base_cmd
 
-        if persist.get_syntax(self.view) in ['c', 'c improved']:
+        if util.get_syntax(self.view) in ['c', 'c improved']:
             result += ' -x c '
-        elif persist.get_syntax(self.view) in ['c++', 'c++11']:
+        elif util.get_syntax(self.view) in ['c++', 'c++11']:
             result += ' -x c++ '
 
         settings = self.get_view_settings()
